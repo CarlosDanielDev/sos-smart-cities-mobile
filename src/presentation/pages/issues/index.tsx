@@ -1,12 +1,13 @@
 import {useFocusEffect} from '@react-navigation/native';
 import React, {useCallback, useState} from 'react';
-import {FlatList, SafeAreaView} from 'react-native';
+import {FlatList, SafeAreaView, Text, View} from 'react-native';
 import {api} from '../../../infra';
 import {useApiContext} from '../../contexts';
 import {Issue, IIssue} from './components/issue';
+import {Styles} from './styles';
 
 export const Issues: React.FC = () => {
-  const {token} = useApiContext();
+  const {token, user} = useApiContext();
   const [issues, setIssues] = useState<IIssue[]>([]);
 
   const fetchIssues = async () => {
@@ -31,7 +32,13 @@ export const Issues: React.FC = () => {
   return (
     <SafeAreaView>
       <FlatList
-        data={issues}
+        ListHeaderComponent={
+          <View style={Styles.header}>
+            <Text style={Styles.titleHeader}>Olá, {user?.name}</Text>
+            <Text>bem vindo de volta, abaixo estão os últimos problemas cadastrados</Text>
+          </View>
+        }
+        data={issues.reverse()}
         keyExtractor={item => item.id.toString()}
         renderItem={({item}) => <Issue issue={item} />}
       />

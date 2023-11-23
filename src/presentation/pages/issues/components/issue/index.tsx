@@ -29,10 +29,9 @@ export const Issue: React.FC<{issue: IIssue}> = ({issue}) => {
       </View>
       {expanded && (
         <View style={Styles.cardContent}>
-          <Text>Description: {issue.description}</Text>
-          <Text>Status: {issue.status}</Text>
-          <Text>City: {issue.city}</Text>
-          <Text>State: {issue.state}</Text>
+          <Text>{issue.description}</Text>
+          <Text>Cidade: {issue.city}</Text>
+          <Text>UF: {issue.state}</Text>
         </View>
       )}
     </TouchableOpacity>
