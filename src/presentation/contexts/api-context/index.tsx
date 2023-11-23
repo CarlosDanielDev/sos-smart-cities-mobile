@@ -17,6 +17,7 @@ type Props = {
   setCurrentToken?: (token: string) => Promise<void>;
   getCurrentToken?: () => Promise<string>;
   bootstrapAsync: () => Promise<void>;
+  invalidateAccess: () => Promise<void>;
   token?: string;
   updateUser: (user: UserInfo) => Promise<void>;
   user?: UserInfo;
@@ -54,11 +55,10 @@ export const ApiContextProvider: React.FC<ApiContextProviderProps> = ({children}
     }
   };
 
-  const invalidateAccess = useCallback(() => {
+  const invalidateAccess = useCallback(async () => {
     setToken('');
-    setCurrentTokenAdapter('');
     setUser(USER_DEFAULT_INFO);
-    setUserInfoAdapter('');
+    await Promise.allSettled([setCurrentTokenAdapter(''), setUserInfoAdapter('')]);
   }, []);
 
   useEffect(() => {
@@ -85,8 +85,17 @@ export const ApiContextProvider: React.FC<ApiContextProviderProps> = ({children}
       getCurrentToken: getCurrentTokenAdapter,
       updateUser,
       user,
+      invalidateAccess,
     }),
-    [token, bootstrapAsync, setCurrentTokenAdapter, getCurrentTokenAdapter, user, updateUser],
+    [
+      token,
+      bootstrapAsync,
+      setCurrentTokenAdapter,
+      getCurrentTokenAdapter,
+      user,
+      updateUser,
+      invalidateAccess,
+    ],
   );
 
   return <ApiContext.Provider value={value}>{children}</ApiContext.Provider>;

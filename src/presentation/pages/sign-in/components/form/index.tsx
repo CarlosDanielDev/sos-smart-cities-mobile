@@ -66,15 +66,18 @@ export const Form = () => {
         control={control}
         name="email"
         render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            style={Styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            autoCapitalize="none"
-            keyboardType="email-address"
-            value={value}
-            placeholder="Email"
-          />
+          <>
+            <Text>E-mail:</Text>
+            <TextInput
+              style={Styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              autoCapitalize="none"
+              keyboardType="email-address"
+              value={value}
+              placeholder="Email"
+            />
+          </>
         )}
       />
       {errors.email && <Text style={Styles.errors}>{errors.email.message}</Text>}
@@ -83,14 +86,17 @@ export const Form = () => {
         control={control}
         name="password"
         render={({field: {onChange, onBlur, value}}) => (
-          <TextInput
-            style={Styles.input}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            placeholder="Senha"
-            secureTextEntry
-          />
+          <>
+            <Text>Senha:</Text>
+            <TextInput
+              style={Styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              placeholder="Senha"
+              secureTextEntry
+            />
+          </>
         )}
       />
       {errors.password && <Text style={Styles.errors}>{errors.password.message}</Text>}
