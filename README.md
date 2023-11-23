@@ -30,7 +30,7 @@ yarn ios --simulator="iPhone 15 Pro Max"
 
 ## Backend
 
-- Baixe esse (repositório)[https://github.com/Pereira277/smart-cities-api]
+- Baixe esse [repositório](https://github.com/Pereira277/smart-cities-api)
 
 Baixe a CLI do `nest`:
 
