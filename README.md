@@ -1,4 +1,6 @@
-# SOS Smart Cities App
+# S.O.S Smart Cities
+
+## SOS Smart Cities Mobile
 
 IOS - Only
 
