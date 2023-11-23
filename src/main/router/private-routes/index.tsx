@@ -2,7 +2,7 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Feather from 'react-native-vector-icons/Feather';
 
-import {Issues, Profile} from '../../../presentation/pages';
+import {Issues, Profile, CreateIssue} from '../../../presentation/pages';
 import {Text} from 'react-native';
 
 export type IPrivateRoutes = {
@@ -42,7 +42,7 @@ export function PrivateRoutes() {
       })}
       initialRouteName="Issues">
       <Screen name="Issues" component={Issues} />
-      <Screen name="CreateIssue" component={Issues} />
+      <Screen name="CreateIssue" component={CreateIssue} />
       <Screen name="Profile" component={Profile} />
     </Navigator>
   );
